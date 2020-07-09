@@ -3,12 +3,14 @@ package angelandroidapps.twitch.angelnavdrawer.ui.viewholders
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.annotation.Keep
 import angelandroidapps.twitch.angelnavdrawer.R
 
 // * Created by Angel on 9/7/2020 7:54 PM.  
 // * Originally created for project "YA Tip Calculator".
 // * Copyright (c) 2020 Angel. All rights reserved. 
 
+@Keep
 @Suppress("unused")
 class DrawerItemViewHolder(parent: View, onItemClicked: (() -> Unit)? = null) {
 

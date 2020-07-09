@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.annotation.Keep
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
@@ -18,18 +19,19 @@ import angelandroidapps.twitch.angelnavdrawer.R
 // * Originally created for project "YA Tip Calculator".
 // * Copyright (c) 2020 Angel. All rights reserved. 
 
+@Keep
 @Suppress("unused", "MemberVisibilityCanBePrivate")
 open class BaseDrawerViewHolder(
-        activity: Activity,
-        toolbar: Toolbar,
-        private val drawerLayout: DrawerLayout
+    activity: Activity,
+    toolbar: Toolbar,
+    private val drawerLayout: DrawerLayout
 ) {
 
     init {
         val toggle = ActionBarDrawerToggle(
-                activity, drawerLayout, toolbar,
-                R.string.navigation_drawer_open,
-                R.string.navigation_drawer_close
+            activity, drawerLayout, toolbar,
+            R.string.navigation_drawer_open,
+            R.string.navigation_drawer_close
         )
         toggle.syncState()
 
@@ -45,9 +47,9 @@ open class BaseDrawerViewHolder(
             closeDrawers()
         }.also {
             it.setup(
-                    R.drawable.ic_drawer_ratings,
-                    R.string.label_give_ratings,
-                    R.string.summary_give_ratings
+                R.drawable.ic_drawer_ratings,
+                R.string.label_give_ratings,
+                R.string.summary_give_ratings
             )
         }
     }
@@ -60,8 +62,8 @@ open class BaseDrawerViewHolder(
             closeDrawers()
         }.also {
             it.setup(
-                    R.drawable.ic_drawer_share, R.string.label_share,
-                    R.string.summary_share
+                R.drawable.ic_drawer_share, R.string.label_share,
+                R.string.summary_share
             )
         }
     }
@@ -79,17 +81,17 @@ open class BaseDrawerViewHolder(
 
 
     protected fun setupDrawerItem(
-            drawerView: View,
-            parentResId: Int,
-            iconResId: Int,
-            titleResId: Int,
-            subtitle: String,
-            onClickCallback: (() -> Unit)? = null
+        drawerView: View,
+        parentResId: Int,
+        iconResId: Int,
+        titleResId: Int,
+        subtitle: String,
+        onClickCallback: (() -> Unit)? = null
     ): TextView? {
         val drawerItem1 = drawerView.findViewById<View>(parentResId)
         drawerItem1.visibility = View.VISIBLE
         drawerItem1.findViewById<ImageView>(R.id.iv)
-                .setImageResource(iconResId)
+            .setImageResource(iconResId)
         drawerItem1.findViewById<TextView>(R.id.tv_title).setText(titleResId)
         val tvSubtitle = drawerItem1.findViewById<TextView>(R.id.tv_subtitle)
         tvSubtitle.text = subtitle
@@ -101,18 +103,18 @@ open class BaseDrawerViewHolder(
 
     @Suppress("MemberVisibilityCanBePrivate")
     protected fun setupDrawerItem(
-            drawerView: View,
-            parentResId: Int,
-            iconResId: Int,
-            titleResId: Int,
-            subtitleResId: Int,
-            onClickCallback: (() -> Unit)? = null
+        drawerView: View,
+        parentResId: Int,
+        iconResId: Int,
+        titleResId: Int,
+        subtitleResId: Int,
+        onClickCallback: (() -> Unit)? = null
     ): TextView? {
         val drawerItem1 = drawerView.findViewById<View>(parentResId)
         drawerItem1.visibility = View.VISIBLE
 
         drawerItem1.findViewById<ImageView>(R.id.iv)
-                .setImageResource(iconResId)
+            .setImageResource(iconResId)
         drawerItem1.findViewById<TextView>(R.id.tv_title).setText(titleResId)
         val tvSubtitle = drawerItem1.findViewById<TextView>(R.id.tv_subtitle)
         tvSubtitle.setText(subtitleResId)
@@ -133,17 +135,17 @@ open class BaseDrawerViewHolder(
         print("appStore: $appPackageName")
         try {
             activity.startActivity(
-                    Intent(
-                            Intent.ACTION_VIEW,
-                            Uri.parse("market://details?id=$appPackageName")
-                    )
+                Intent(
+                    Intent.ACTION_VIEW,
+                    Uri.parse("market://details?id=$appPackageName")
+                )
             )
         } catch (e: Exception) {
             activity.startActivity(
-                    Intent(
-                            Intent.ACTION_VIEW,
-                            Uri.parse("https://play.google.com/store/apps/details?id=$appPackageName")
-                    )
+                Intent(
+                    Intent.ACTION_VIEW,
+                    Uri.parse("https://play.google.com/store/apps/details?id=$appPackageName")
+                )
             )
         }
     }
@@ -159,14 +161,14 @@ open class BaseDrawerViewHolder(
         val sharingIntent = Intent(Intent.ACTION_SEND)
         sharingIntent.type = "text/plain"
         sharingIntent.putExtra(
-                Intent.EXTRA_SUBJECT, installMessage
+            Intent.EXTRA_SUBJECT, installMessage
         )
 
         sharingIntent.putExtra(Intent.EXTRA_TEXT, shareBody)
 
         print("Share: $sharingIntent")
         activity.startActivity(
-                Intent.createChooser(sharingIntent, shareVia)
+            Intent.createChooser(sharingIntent, shareVia)
         )
     }
 

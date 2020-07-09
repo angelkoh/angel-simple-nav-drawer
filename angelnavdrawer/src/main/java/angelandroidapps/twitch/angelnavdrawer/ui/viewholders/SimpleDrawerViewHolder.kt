@@ -2,6 +2,7 @@ package angelandroidapps.twitch.angelnavdrawer.ui.viewholders
 
 import android.app.Activity
 import android.view.View
+import androidx.annotation.Keep
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import angelandroidapps.twitch.angelnavdrawer.R
@@ -10,12 +11,13 @@ import angelandroidapps.twitch.angelnavdrawer.R
 // * Originally created for project "YA Tip Calculator".
 // * Copyright (c) 2020 Angel. All rights reserved. 
 
+@Keep
 @Suppress("unused")
 class SimpleDrawerViewHolder(
-        activity: Activity, toolbar: Toolbar,
-        drawerLayout: DrawerLayout
+    activity: Activity, toolbar: Toolbar,
+    drawerLayout: DrawerLayout
 ) : BaseDrawerViewHolder(
-        activity, toolbar, drawerLayout
+    activity, toolbar, drawerLayout
 ) {
     init {
         val parent = activity.findViewById<View>(R.id.drawer_nav_view)
