@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="label_version">Version</string>
+    <string name="label_give_ratings">Give ratings</string>
+    <string name="summary_give_ratings">Please take a moment to rate this app.\nThank you for your support!</string>
+    <string name="label_share">Share</string>
+    <string name="summary_share">Share this app with a friend.</string>
+
+
+    <string name="message_share">Install from Google play store. %1$s</string>
+    <string name="message_share_via">Share %1$s via…</string>
+
+    <string name="navigation_drawer_open">open navigation drawer</string>
+    <string name="navigation_drawer_close">close navigation drawer</string>
+    <string name="app_name">angel\'s app</string>
+    <string name="cd_item_icon">item icon</string>
+    <string name="cd_logo">logo</string>
+</resources>
