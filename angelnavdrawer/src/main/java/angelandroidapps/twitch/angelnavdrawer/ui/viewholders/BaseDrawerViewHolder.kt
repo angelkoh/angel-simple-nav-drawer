@@ -12,7 +12,6 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
-import angelandroidapps.twitch.angelnavdrawer.BuildConfig
 import angelandroidapps.twitch.angelnavdrawer.R
 
 // * Created by Angel on 9/7/2020 8:16 PM.  
@@ -68,11 +67,17 @@ open class BaseDrawerViewHolder(
         }
     }
 
-    fun setupVersion(parent: View) {
+    fun setupVersion(activity: Activity, parent: View) {
         parent.visibility = View.VISIBLE
         DrawerItemViewHolder(parent).also {
 
-            it.setup(R.drawable.ic_drawer_version, R.string.label_version, BuildConfig.VERSION_NAME)
+            val versionName = try {
+                activity.packageManager.getPackageInfo(activity.packageName, 0).versionName
+            } catch (e: java.lang.Exception) {
+                "1.0"
+            }
+
+            it.setup(R.drawable.ic_drawer_version, R.string.label_version, versionName)
         }
     }
 

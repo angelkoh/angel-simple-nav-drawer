@@ -21,7 +21,7 @@ class SimpleDrawerViewHolder(
 ) {
     init {
         val parent = activity.findViewById<View>(R.id.drawer_nav_view)
-        setupVersion(parent.findViewById(R.id.item_1))
+        setupVersion(activity, parent.findViewById(R.id.item_1))
         setupShare(activity, parent.findViewById(R.id.item_2))
         setupGiveRatings(activity, parent.findViewById(R.id.item_3))
     }
