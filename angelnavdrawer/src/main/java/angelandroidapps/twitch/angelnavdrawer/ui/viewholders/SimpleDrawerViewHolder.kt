@@ -15,12 +15,13 @@ import angelandroidapps.twitch.angelnavdrawer.R
 @Suppress("unused")
 class SimpleDrawerViewHolder(
     activity: Activity, toolbar: Toolbar,
-    drawerLayout: DrawerLayout
+    drawerLayout: DrawerLayout, view: View? = null
 ) : BaseDrawerViewHolder(
     activity, toolbar, drawerLayout
 ) {
     init {
-        val parent = activity.findViewById<View>(R.id.drawer_nav_view)
+
+        val parent = view ?: activity.findViewById<View>(R.id.drawer_nav_view)
         setupVersion(activity, parent.findViewById(R.id.item_1))
         setupShare(activity, parent.findViewById(R.id.item_2))
         setupGiveRatings(activity, parent.findViewById(R.id.item_3))
