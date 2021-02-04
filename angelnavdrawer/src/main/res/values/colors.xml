@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#1C2366</color>
+    <color name="drawer_primary_color">#1C2366</color>
 </resources>

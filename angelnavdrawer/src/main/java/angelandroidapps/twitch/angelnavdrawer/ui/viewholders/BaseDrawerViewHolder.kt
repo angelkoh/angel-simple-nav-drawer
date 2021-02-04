@@ -84,6 +84,23 @@ open class BaseDrawerViewHolder(
     fun isDrawerOpened() = drawerLayout.isDrawerOpen(GravityCompat.START)
     fun closeDrawers() = drawerLayout.closeDrawers()
 
+    protected fun setupDrawerItem (drawerItem:View,
+                                   iconResId: Int,
+                                   titleResId: Int,
+                                   subtitle: String,
+                                   onClickCallback: (() -> Unit)? = null
+    ): TextView? {
+        drawerItem.visibility = View.VISIBLE
+        drawerItem.findViewById<ImageView>(R.id.iv)
+            .setImageResource(iconResId)
+        drawerItem.findViewById<TextView>(R.id.tv_title).setText(titleResId)
+        val tvSubtitle = drawerItem.findViewById<TextView>(R.id.tv_subtitle)
+        tvSubtitle.text = subtitle
+        if (onClickCallback != null) {
+            drawerItem.setOnClickListener { onClickCallback() }
+        }
+        return tvSubtitle
+    }
 
     protected fun setupDrawerItem(
         drawerView: View,
@@ -94,16 +111,7 @@ open class BaseDrawerViewHolder(
         onClickCallback: (() -> Unit)? = null
     ): TextView? {
         val drawerItem1 = drawerView.findViewById<View>(parentResId)
-        drawerItem1.visibility = View.VISIBLE
-        drawerItem1.findViewById<ImageView>(R.id.iv)
-            .setImageResource(iconResId)
-        drawerItem1.findViewById<TextView>(R.id.tv_title).setText(titleResId)
-        val tvSubtitle = drawerItem1.findViewById<TextView>(R.id.tv_subtitle)
-        tvSubtitle.text = subtitle
-        if (onClickCallback != null) {
-            drawerItem1.setOnClickListener { onClickCallback() }
-        }
-        return tvSubtitle
+        return setupDrawerItem(drawerItem1, iconResId, titleResId, subtitle, onClickCallback)
     }
 
     @Suppress("MemberVisibilityCanBePrivate")

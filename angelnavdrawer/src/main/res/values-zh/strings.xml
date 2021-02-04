@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="navigation_drawer_open">打开导航抽屉</string>
+    <string name="navigation_drawer_close">关闭导航抽屉</string>
+    <string name="label_version">版本</string>
+    <string name="label_give_ratings">给于评级</string>
+    <string name="summary_give_ratings">请花点时间评价这个应用程序。\ n感谢您的支持！</string>
+    <string name="label_share">分享</string>
+    <string name="summary_share">与朋友分享这个应用程序。</string>
+
+    <string name="message_share">Install from Google play store. %1$s</string>
+    <string name="message_share_via">Share %1$s via…</string>
+
+    <string name="app_name">angel\'s app</string>
+    <string name="cd_item_icon">图标</string>
+    <string name="cd_logo">商标</string>
+</resources>
