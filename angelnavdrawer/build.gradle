@@ -7,14 +7,14 @@ android {
     defaultConfig {
         minSdkVersion 22
         targetSdkVersion 30
-        versionCode 4
-        versionName "1.0.4"
+        versionCode 5
+        versionName "1.0.5"
 
         setProperty("archivesBaseName", "angelSimpleNavDrawer-$versionName")
         consumerProguardFiles "consumer-rules.pro"
     }
 /*
-version 4: nightMode
+version 5: nightMode
  */
 
     buildTypes {
