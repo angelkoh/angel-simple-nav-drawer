@@ -1,19 +1,31 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+apply plugin: 'maven-publish'
 
 android {
+
+    namespace = 'angelandroidapps.twitch.angelnavdrawer'
     compileSdkVersion 33
 
     defaultConfig {
         minSdkVersion 22
         targetSdkVersion 33
-        versionCode 6
-        versionName "1.0.6"
+        versionCode 7
+        versionName "1.0.7"
 
         setProperty("archivesBaseName", "angelSimpleNavDrawer-$versionName")
         consumerProguardFiles "consumer-rules.pro"
     }
+
+    publishing {
+        singleVariant('release') {
+            withSourcesJar()
+        }
+    }
+
 /*
+version 7: maven-publish
+version 6: updatable logo and title
 version 5: nightMode
  */
 
