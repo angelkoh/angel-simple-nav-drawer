@@ -57,7 +57,7 @@ afterEvaluate {
             release(MavenPublication) {
                 from components.release
                 groupId = gpId
-                artifactId = 'angel-nav-drawer'
+                artifactId = "angelSimpleNavDrawer"
                 version = vers
             }
         }
