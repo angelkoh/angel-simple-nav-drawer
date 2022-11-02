@@ -2,9 +2,12 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'maven-publish'
 
+def gpId = 'angelandroidapps.twitch.angelnavdrawer'
+def vers = '1.0.7'
+
 android {
 
-    namespace = 'angelandroidapps.twitch.angelnavdrawer'
+    namespace = gpId
     compileSdkVersion 33
 
     defaultConfig {
@@ -17,11 +20,6 @@ android {
         consumerProguardFiles "consumer-rules.pro"
     }
 
-    publishing {
-        singleVariant('release') {
-            withSourcesJar()
-        }
-    }
 
 /*
 version 7: maven-publish
@@ -39,7 +37,15 @@ version 5: nightMode
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
+            withJavadocJar()
+        }
+    }
 }
+
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
@@ -49,4 +55,17 @@ dependencies {
     implementation 'com.google.android.material:material:1.7.0'
 
 
+}
+afterEvaluate {
+    publishing {
+        publications {
+            // Creates a Maven publication called "release".
+            release(MavenPublication) {
+                from components.release
+                groupId = gpId
+                artifactId = 'angel-nav-drawer'
+                version = vers
+            }
+        }
+    }
 }
