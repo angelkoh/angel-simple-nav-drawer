@@ -2,7 +2,9 @@ package angelandroidapps.twitch.angelnavdrawer.ui.viewholders
 
 import android.app.Activity
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.Uri
+import android.os.Build
 import android.util.Log
 import android.view.View
 import android.widget.ImageView
@@ -34,9 +36,20 @@ open class BaseDrawerViewHolder(
         )
         toggle.syncState()
 
-        drawerLayout.findViewById<ImageView>(R.id.iv_logo).drawable
+        //drawerLayout.findViewById<ImageView>(R.id.iv_logo).drawable
         drawerLayout.findViewById<TextView>(R.id.tv_app_title).setText(R.string.app_name)
 
+    }
+
+    fun updateLogo(drawableResId: Int) {
+        drawerLayout.findViewById<ImageView>(R.id.iv_logo).setImageResource(drawableResId)
+    }
+    fun updateTitle(id: Int) {
+        drawerLayout.findViewById<TextView>(R.id.tv_app_title).setText(id)
+    }
+
+    fun updateTitle(title: String) {
+        drawerLayout.findViewById<TextView>(R.id.tv_app_title).text = title
     }
 
     fun setupGiveRatings(activity: Activity, parent: View) {
@@ -71,11 +84,21 @@ open class BaseDrawerViewHolder(
         parent.visibility = View.VISIBLE
         DrawerItemViewHolder(parent).also {
 
-            val versionName = try {
-                activity.packageManager.getPackageInfo(activity.packageName, 0).versionName
-            } catch (e: java.lang.Exception) {
-                "1.0"
-            }
+            val versionName =
+                try {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                        activity.packageManager.getPackageInfo(
+                            activity.packageName,
+                            PackageManager.PackageInfoFlags.of(0)
+                        ).versionName
+                    } else {
+                        @Suppress("DEPRECATION")
+                        activity.packageManager.getPackageInfo(activity.packageName, 0)
+                            .versionName
+                    }
+                } catch (e: Exception) {
+                    "1.0"
+                }
 
             it.setup(R.drawable.ic_drawer_version, R.string.label_version, versionName)
         }
@@ -84,11 +107,12 @@ open class BaseDrawerViewHolder(
     fun isDrawerOpened() = drawerLayout.isDrawerOpen(GravityCompat.START)
     fun closeDrawers() = drawerLayout.closeDrawers()
 
-    protected fun setupDrawerItem (drawerItem:View,
-                                   iconResId: Int,
-                                   titleResId: Int,
-                                   subtitle: String,
-                                   onClickCallback: (() -> Unit)? = null
+    protected fun setupDrawerItem(
+        drawerItem: View,
+        iconResId: Int,
+        titleResId: Int,
+        subtitle: String,
+        onClickCallback: (() -> Unit)? = null
     ): TextView? {
         drawerItem.visibility = View.VISIBLE
         drawerItem.findViewById<ImageView>(R.id.iv)
