@@ -13,7 +13,7 @@ android {
     defaultConfig {
         minSdkVersion 22
         targetSdkVersion 33
-        versionCode 320001
+        versionCode 320002
         versionName vers
 
         setProperty("archivesBaseName", "angelSimpleNavDrawer-$vers")
@@ -22,7 +22,7 @@ android {
 
 
 /*
-version 7,8: maven-publish
+version 320000+: maven-publish
 version 6: updatable logo and title
 version 5: nightMode
  */
@@ -37,6 +37,7 @@ version 5: nightMode
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
     publishing {
         singleVariant('release') {
             withSourcesJar()
@@ -56,6 +57,7 @@ dependencies {
 }
 
 //https://developer.android.com/studio/publish-library/upload-library
+//shows in <users>/.m2/repository/<groupId> when compile in gradlew -publishToMavenLocal
 publishing {
     publications {
         // Creates a Maven publication called "release".
