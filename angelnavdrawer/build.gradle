@@ -3,13 +3,11 @@ apply plugin: 'kotlin-android'
 apply plugin: 'maven-publish'
 
 //https://jitpack.io/docs/BUILDING/
-def gpId = 'angelandroidapps.twitch.angelnavdrawer'
-def vers = '1.1.3'
-def artId ="angelSimpleNavDrawer"
+def vers = '1.1.4'
 
 android {
 
-    namespace = gpId
+    namespace =  'angelandroidapps.twitch.angelnavdrawer'
     compileSdkVersion 33
 
     defaultConfig {
@@ -18,7 +16,7 @@ android {
         versionCode 320001
         versionName vers
 
-        setProperty("archivesBaseName", "$artId-$vers")
+        setProperty("archivesBaseName", "angelSimpleNavDrawer-$vers")
         consumerProguardFiles "consumer-rules.pro"
     }
 
@@ -56,15 +54,18 @@ dependencies {
 
 
 }
-afterEvaluate {
-    publishing {
-        publications {
-            // Creates a Maven publication called "release".
-            release(MavenPublication) {
+
+//https://developer.android.com/studio/publish-library/upload-library
+publishing {
+    publications {
+        // Creates a Maven publication called "release".
+        release(MavenPublication) {
+            groupId = 'com.github.angelkoh'
+            artifactId = 'angel-simple-nav-drawer'
+            version = vers
+
+            afterEvaluate {
                 from components.release
-                groupId = gpId
-                artifactId = artId
-                version = vers
             }
         }
     }
