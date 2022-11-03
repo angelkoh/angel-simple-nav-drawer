@@ -3,8 +3,8 @@ apply plugin: 'kotlin-android'
 apply plugin: 'maven-publish'
 
 def gpId = 'angelandroidapps.twitch.angelnavdrawer'
-def vers = '1.1.0'
-def artId ="angelSimpleNavDrawer"
+def vers = '1.1.0-a1'
+def artId ="angelSimpleNavDrawer-"+vers
 
 android {
 
@@ -14,10 +14,10 @@ android {
     defaultConfig {
         minSdkVersion 22
         targetSdkVersion 33
-        versionCode 202211
+        versionCode 320001
         versionName vers
 
-        setProperty("archivesBaseName", "$artId-$versionName")
+        setProperty("archivesBaseName", "$artId")
         consumerProguardFiles "consumer-rules.pro"
     }
 
@@ -41,7 +41,6 @@ version 5: nightMode
     publishing {
         singleVariant('release') {
             withSourcesJar()
-            withJavadocJar()
         }
     }
 }
