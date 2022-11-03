@@ -3,8 +3,8 @@ apply plugin: 'kotlin-android'
 apply plugin: 'maven-publish'
 
 def gpId = 'angelandroidapps.twitch.angelnavdrawer'
-def vers = '1.1.1'
-def artId ="angelSimpleNavDrawer-"+vers
+def vers = '1.1.2'
+def artId ="angelSimpleNavDrawer"
 
 android {
 
@@ -17,7 +17,7 @@ android {
         versionCode 320001
         versionName vers
 
-        setProperty("archivesBaseName", "$artId")
+        setProperty("archivesBaseName", "$artId-$vers")
         consumerProguardFiles "consumer-rules.pro"
     }
 
