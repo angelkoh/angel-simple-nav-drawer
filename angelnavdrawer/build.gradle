@@ -3,17 +3,17 @@ apply plugin: 'kotlin-android'
 apply plugin: 'maven-publish'
 
 //https://jitpack.io/docs/BUILDING/
-def vers = '1.1.4'
+def vers = '1.1.5'
 
 android {
 
-    namespace =  'angelandroidapps.twitch.angelnavdrawer'
+    namespace = 'angelandroidapps.twitch.angelnavdrawer'
     compileSdkVersion 33
 
     defaultConfig {
         minSdkVersion 22
         targetSdkVersion 33
-        versionCode 320002
+        versionCode 320003
         versionName vers
 
         setProperty("archivesBaseName", "angelSimpleNavDrawer-$vers")
@@ -38,11 +38,11 @@ version 5: nightMode
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-    publishing {
-        singleVariant('release') {
-            withSourcesJar()
-        }
-    }
+//    publishing {
+//        singleVariant('release') {
+//            withSourcesJar()
+//        }
+//    }
 }
 
 
