@@ -20,7 +20,7 @@ android {
         consumerProguardFiles "consumer-rules.pro"
     }
 
-    namespace 'angelandroidapp.angelnavdrawer'
+    namespace 'angelandroidapps.twitch.angelnavdrawer'
 
 /*
 version 320000+: maven-publish
