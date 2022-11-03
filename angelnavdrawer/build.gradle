@@ -1,15 +1,15 @@
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
-apply plugin: 'maven-publish'
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'maven-publish'
+}
 
 //https://jitpack.io/docs/BUILDING/
-def vers = '1.1.5'
+//https://github.com/jitpack/android-example
+def vers = '1.1.6'
 
 android {
-
-    namespace = 'angelandroidapps.twitch.angelnavdrawer'
     compileSdkVersion 33
-
     defaultConfig {
         minSdkVersion 22
         targetSdkVersion 33
@@ -20,6 +20,7 @@ android {
         consumerProguardFiles "consumer-rules.pro"
     }
 
+    namespace 'angelandroidapp.angelnavdrawer'
 
 /*
 version 320000+: maven-publish
@@ -29,13 +30,13 @@ version 5: nightMode
 
     buildTypes {
         release {
-            minifyEnabled true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+
+    kotlinOptions {
+        jvmTarget = '1.8'
     }
 
 //    publishing {
@@ -52,22 +53,20 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'com.google.android.material:material:1.7.0'
-
-
 }
 
 //https://developer.android.com/studio/publish-library/upload-library
 //shows in <users>/.m2/repository/<groupId> when compile in gradlew -publishToMavenLocal
-publishing {
-    publications {
-        // Creates a Maven publication called "release".
-        release(MavenPublication) {
-            groupId = 'com.github.angelkoh'
-            artifactId = 'angel-simple-nav-drawer'
-            version = vers
 
-            afterEvaluate {
+afterEvaluate {
+    publishing {
+        publications {
+            // Creates a Maven publication called "release".
+            release(MavenPublication) {
                 from components.release
+                groupId = 'com.github.angelkoh'
+                artifactId = 'angel-simple-nav-drawer'
+                version = vers
             }
         }
     }
