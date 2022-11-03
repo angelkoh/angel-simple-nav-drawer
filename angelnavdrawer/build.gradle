@@ -6,14 +6,14 @@ plugins {
 
 //https://jitpack.io/docs/BUILDING/
 //https://github.com/jitpack/android-example
-def vers = '1.1.6'
+def vers = '1.1.7'
 
 android {
     compileSdkVersion 33
     defaultConfig {
         minSdkVersion 22
         targetSdkVersion 33
-        versionCode 320003
+        versionCode 330000
         versionName vers
 
         setProperty("archivesBaseName", "angelSimpleNavDrawer-$vers")
@@ -30,7 +30,7 @@ version 5: nightMode
 
     buildTypes {
         release {
-            minifyEnabled true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
