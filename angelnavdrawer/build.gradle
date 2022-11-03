@@ -2,8 +2,9 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'maven-publish'
 
+//https://jitpack.io/docs/BUILDING/
 def gpId = 'angelandroidapps.twitch.angelnavdrawer'
-def vers = '1.1.2'
+def vers = '1.1.3'
 def artId ="angelSimpleNavDrawer"
 
 android {
